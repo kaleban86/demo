@@ -15,19 +15,23 @@
 <body>
 
 <div class="container mt-5 mb-5">
-    <h2>Добавить новый товар</h2>
+    <h2>Заказ</h2>
 
-    <form th:action="@{/new-goods}" method="post">
+    <form th:action="@{/order-add}" method="post">
         <div class="form-group">
-            <label for=>Название товара:</label>
-            <input type="text"name="name" class="form-control">
+            <label for=>Клиент:</label>
+            <input type="text"name="client" class="form-control">
         </div>
         <div class="form-group">
-            <label for=>Стоимость:</label>
-            <input type="text" name="price" class="form-control">
+            <label for=>Адрес:</label>
+            <input type="text" name="address" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for=>Название:</label>
+            <input type="text" name="name" class="form-control">
         </div>
 
-        <button type="submit"href="/goods" class="btn btn-success">Сохранить</button>
+        <button type="submit"href="/new-order" class="btn btn-success">Сохранить</button>
     </form>
 </div>
 </body>

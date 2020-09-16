@@ -12,7 +12,7 @@
 
 <div id="menu" class="">
     <a class="data-placement= right"
-       title="Новое обращение" href="appeal"><svg  style="color : black" class="bi bi-file-earmark-plus" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+       title="Новое обращение" href="/new-order"><svg  style="color : black" class="bi bi-file-earmark-plus" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path d="M9 1H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h5v-1H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h5v2.5A1.5 1.5 0 0 0 10.5 6H13v2h1V6L9 1z"/>
         <path fill-rule="evenodd" d="M13.5 10a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1H13v-1.5a.5.5 0 0 1 .5-.5z"/>
         <path fill-rule="evenodd" d="M13 12.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0v-2z"/>
@@ -83,4 +83,86 @@
 
 </script>
 </body>
+<style>
+    body, html {
+        height: 100%;
+    }
+
+    #menu {
+        background-color: #708090;
+    }
+
+    #menu * {
+        margin: 30px 5px;
+        height: 50px;
+        width: 50px;
+    }
+
+    #content {
+        height: 100%;
+        overflow-y: scroll;
+    }
+
+    table {
+
+        border-spacing: 0;
+        width: 100%;
+    }
+
+    th {
+        cursor: pointer;
+    }
+
+    th, td {
+        text-align: left;
+        /*padding: 5px;*/
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2
+    }
+
+    .sidenav {
+        height: 100%;
+        width: 90px;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #708090;
+        overflow-x: hidden;
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 20px;
+        color: #3f3939;
+        display: block;
+    }
+
+    .sidenav a:hover {
+        color: #3f3939;
+    }
+
+    .main {
+        margin-left: 160px;
+        /* Same as the width of the sidenav */
+        font-size: 28px;
+        /* Increased text to enable scrolling */
+        padding: 0px 10px;
+    }
+
+    @media screen and (max-height: 450px) {
+        .sidenav {
+            padding-top: 15px;
+        }
+
+        .sidenav a {
+            font-size: 18px;
+        }
+    }
+
+
+</style>
 </html>

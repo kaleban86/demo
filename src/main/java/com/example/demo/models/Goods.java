@@ -1,4 +1,4 @@
-package com.example.models;
+package com.example.demo.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,14 +17,13 @@ public class Goods {
     private BigDecimal price;
 
 
-    public Goods() {
-    }
-
     public Goods(String name, BigDecimal price) {
         this.id = id;
         this.name = name;
         this.price = price;
     }
+
+
 
 
 

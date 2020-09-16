@@ -1,6 +1,6 @@
-package com.example.controller;
+package com.example.demo.controller;
 
-import com.example.repository.GoodsRepo;
+import com.example.demo.repository.GoodsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,11 +14,14 @@ import java.math.BigDecimal;
 public class Goods {
 
 
-    private  GoodsRepo goodsRepo;
+    private final GoodsRepo goodsRepo;
 
-    public void setGoods(GoodsRepo goodsRepo) {
+    public Goods(GoodsRepo goodsRepo) {
         this.goodsRepo = goodsRepo;
     }
+
+
+
 
     @RequestMapping(value = "/goods", method = RequestMethod.GET)
     public String test(String name, Model model) {
@@ -44,8 +47,7 @@ public class Goods {
     public String newGoods(Model model, @RequestParam String name, @RequestParam BigDecimal price){
 
 
-        com.example.models.Goods goods = new com.example.models.Goods(name,price);
-
+        com.example.demo.models.Goods goods = new com.example.demo.models.Goods(name,price);
         goodsRepo.save(goods);
         return "redirect:/goods";
     }
