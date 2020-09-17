@@ -14,7 +14,7 @@ import java.sql.Date;
 public class OrderId {
 
     @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
 
@@ -30,14 +30,13 @@ public class OrderId {
     }
 
 
-
     public OrderId(String client, String address, String name) {
 
 
-        this.id=id;
+        this.id = id;
         this.client = client;
-        this.address= address;
-        this.name=name;
+        this.address = address;
+        this.name = name;
     }
 
     public Long getId() {
@@ -71,6 +70,7 @@ public class OrderId {
     public void setAddress(String address) {
         this.address = address;
     }
+
     public String getClient() {
         return client;
     }

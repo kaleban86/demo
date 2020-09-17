@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+
+
+
+
+</head>
+<body>
+
+<div class="container-fluid">
+
+    <form enctype="multipart/form-data" th:action="@{/goods-update}"
+          th:object="${goods}"
+          method="post">
+
+
+            <label>№:</label>
+            <input readonly type="number" th:field="*{id}" class="form-control"><br>
+
+
+
+
+
+        <label>Товар:</label>
+        <input type="text" th:field="*{name}" class="form-control" maxlength="50"><br>
+
+        <label>Цена:</label>
+            <input type="text" th:field="*{price}" class="form-control" maxlength="50"><br>
+
+        <button type="submit" class="btn btn-success">Сохранить</button>
+
+    </form>
+
+</div>
+
+
+
+</body>
+</html>

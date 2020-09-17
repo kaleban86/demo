@@ -1,9 +1,6 @@
 package com.example.demo.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class OrderLine {
@@ -12,9 +9,12 @@ public class OrderLine {
 
     private Long id;
 
-    private Long orderId;
-
-    private Long goodsId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "orderId")
+    private OrderId orderId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "goodsId")
+    private Goods goodsId;
 
     private Long count;
 
@@ -22,11 +22,12 @@ public class OrderLine {
     public OrderLine() {
     }
 
-    public OrderLine(Long id, Long orderId, Long goodsId, Long count) {
+    public OrderLine(Long id, OrderId orderId, Goods goodsId, Long count) {
         this.id = id;
         this.orderId = orderId;
         this.goodsId = goodsId;
         this.count = count;
+
     }
 
     public Long getId() {
@@ -37,19 +38,19 @@ public class OrderLine {
         this.id = id;
     }
 
-    public Long getOrderId() {
+    public OrderId getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(Long orderId) {
+    public void setOrderId(OrderId orderId) {
         this.orderId = orderId;
     }
 
-    public Long getGoodsId() {
+    public Goods getGoodsId() {
         return goodsId;
     }
 
-    public void setGoodsId(Long goodsId) {
+    public void setGoodsId(Goods goodsId) {
         this.goodsId = goodsId;
     }
 
@@ -60,4 +61,5 @@ public class OrderLine {
     public void setCount(Long count) {
         this.count = count;
     }
+
 }

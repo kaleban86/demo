@@ -14,7 +14,6 @@ import java.sql.Date;
 public class Order {
 
 
-
     private final OrderRepo orderRepo;
 
     public Order(OrderRepo orderRepo) {
@@ -24,16 +23,15 @@ public class Order {
     @RequestMapping(value = "/order-history", method = RequestMethod.GET)
     public String test(String name, Model model) {
 
-        model.addAttribute("name",model);
+        model.addAttribute("order", orderRepo.findAll());
 
 
         return "/order-history";
     }
 
 
-
     @RequestMapping(value = "/new-order", method = RequestMethod.GET)
-    public String newOrder(String name,Model model){
+    public String newOrder(String name, Model model) {
 
 
         return "/new-order";
@@ -41,16 +39,15 @@ public class Order {
     }
 
 
-    @RequestMapping(value =  "/order-add", method = RequestMethod.POST)
-    public String addOrder( Model model, @RequestParam String client, String address, String name){
+    @RequestMapping(value = "/order-add", method = RequestMethod.POST)
+    public String addOrder(Model model, @RequestParam String client, String address, String name) {
 
-        com.example.demo.models.OrderId order = new com.example.demo.models.OrderId(client, address ,name);
+        com.example.demo.models.OrderId order = new com.example.demo.models.OrderId(client, address, name);
 
         orderRepo.save(order);
 
         return "redirect:/order-history";
     }
-
 
 
 }
