@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
@@ -64,6 +65,7 @@ public class Goods {
     }
 
 
+    @Transactional
     @RequestMapping(value = "goods-update", method = RequestMethod.POST)
     public String save(com.example.demo.models.Goods goods) {
 

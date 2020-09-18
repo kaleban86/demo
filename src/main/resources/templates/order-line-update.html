@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="container-fluid">
+    <form enctype="multipart/form-data" th:action="@{/order-line-update} " method="post">
+        <label for=>Краткое описание:</label>
+        <div class="row">
+        </div>
+        <div>
+            <label for=>Товар:</label>
+
+            <select class="custom-select" name="goodsId" required>
+                <!--/*@thymesVar id="id" type="com"*/-->
+                <option th:each="listGoods : ${listGoods}"
+                        th:value="${listGoods.id}"
+                        th:text="${listGoods.name}"></option>
+            </select>
+
+        </div>
+        <label for=>Покупатель:</label>
+
+        <select class="custom-select" name="orderId" required>
+            <!--/*@thymesVar id="id" type="com"*/-->
+            <option th:each="orderIdList : ${orderIdList}"
+                    th:value="${orderIdList.id}"
+                    th:text="${orderIdList.name}"></option>
+        </select>
+        <label for=>Количество:</label>
+        <div class="input-group mb-3">
+
+            <input  type="text" th:field="*{count}" class="form-control">
+        </div>
+
+        <div>
+            <button type="submit" href="/appealHome" class="btn btn-success">Сохранить</button>
+        </div>
+
+    </form>
+
+</div>
+
+
+</div>
+
+
+<div>
+
+
+</div>
+
+
+
+
+</div>
+
+
+</body>
+</html>

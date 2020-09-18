@@ -7,10 +7,12 @@ import com.example.demo.repository.OderLineRepo;
 import com.example.demo.repository.OrderRepo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class OrderLine {
@@ -55,12 +57,18 @@ public class OrderLine {
     }
 
 
-    @RequestMapping(value = "order-line-new", method = RequestMethod.GET)
-    public String saveOrderLine(com.example.demo.models.OrderLine orderLine) {
 
-        oderLineRepo.save(orderLine);
+    @RequestMapping(value = "/order-line/{id}",method = RequestMethod.GET)
+    public String orderLineUpdate(@PathVariable Long id,Model model){
+        List<Goods> listGoods = goodsRepo.findAll();
+        model.addAttribute("listGoods", listGoods);
+        List<OrderId> orderIdList = orderRepo.findAll();
+        model.addAttribute("orderIdList", orderIdList);
+        Optional<com.example.demo.models.OrderLine> list = oderLineRepo.findById(id);
+        model.addAttribute("order-line",list);
 
-        return "redirect:/order-line";
+        return "/order-line-update";
+
     }
 
 
