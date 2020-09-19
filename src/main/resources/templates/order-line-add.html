@@ -36,7 +36,7 @@
 
 
             <!--/*@thymesVar id="customerList" type="com"*/-->
-            <form enctype="multipart/form-data" th:action="@{/order-line-new} " method="post">
+            <form enctype="multipart/form-data" th:action="@{/order-line-add} " method="post">
                 <label for=>Краткое описание:</label>
                 <div class="row">
                 </div>
@@ -44,7 +44,8 @@
                     <label for=>Товар:</label>
 
                     <select class="custom-select" name="goodsId" required>
-                        <!--/*@thymesVar id="id" type="com"*/-->
+
+                        <!--/*@thymesVar id="listGoods" type="com"*/-->
                         <option th:each="listGoods : ${listGoods}"
                                 th:value="${listGoods.id}"
                                 th:text="${listGoods.name}"></option>
@@ -54,7 +55,8 @@
                 <label for=>Покупатель:</label>
 
                 <select class="custom-select" name="orderId" required>
-                    <!--/*@thymesVar id="id" type="com"*/-->
+
+                    <!--/*@thymesVar id="orderIdList" type="com"*/-->
                     <option th:each="orderIdList : ${orderIdList}"
                             th:value="${orderIdList.id}"
                             th:text="${orderIdList.name}"></option>

@@ -8,7 +8,7 @@
 <body>
 
 <div class="container-fluid">
-    <form enctype="multipart/form-data" th:action="@{/order-line-update} " method="post">
+    <form enctype="multipart/form-data" th:action="@{/order-line-update} " th:object="${line}" method="post">
         <label for=>Краткое описание:</label>
         <div class="row">
         </div>

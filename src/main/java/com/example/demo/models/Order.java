@@ -10,8 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.sql.Date;
 
-@Entity
-public class OrderId {
+@Entity(name = "orderdata")
+public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,14 +26,11 @@ public class OrderId {
     private String address;
     private String client;
 
-    public OrderId() {
+    public Order() {
     }
 
 
-    public OrderId(String client, String address, String name) {
-
-
-        this.id = id;
+    public Order(String client, String address, String name) {
         this.client = client;
         this.address = address;
         this.name = name;

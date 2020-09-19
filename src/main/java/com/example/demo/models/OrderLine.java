@@ -12,7 +12,7 @@ public class OrderLine {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "orderId")
-    private OrderId orderId;
+    private Order orderId;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "goodsId")
     private Goods goodsId;
@@ -23,7 +23,7 @@ public class OrderLine {
     public OrderLine() {
     }
 
-    public OrderLine(Long id, OrderId orderId, Goods goodsId, Long count) {
+    public OrderLine(Long id, Order orderId, Goods goodsId, Long count) {
         this.id = id;
         this.orderId = orderId;
         this.goodsId = goodsId;
@@ -39,11 +39,11 @@ public class OrderLine {
         this.id = id;
     }
 
-    public OrderId getOrderId() {
+    public Order getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(OrderId orderId) {
+    public void setOrderId(Order orderId) {
         this.orderId = orderId;
     }
 

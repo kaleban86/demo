@@ -11,7 +11,7 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 
 @Configuration
 @EnableWebMvc
-public class Mvc implements WebMvcConfigurer {
+public class AppConfig implements WebMvcConfigurer {
 
 
     @Override

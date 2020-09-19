@@ -2,17 +2,18 @@
 <html lang="ru" class="container-fluid">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Входящeе обращение</title>
+    <title>Журнал товаров</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" th:href="@{/css/appealHome.css}"/>
+    <link rel="stylesheet" th:href="@{resources/static/css/goods.css}"/>
+
 </head>
 
 <body class="row">
 
 <div id="menu" class="">
     <a class="data-placement= right"
-       title="Новое обращение" href="new-order"><svg  style="color : black" class="bi bi-file-earmark-plus" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+       title="Добавить новый товар" href="goods-add"><svg  style="color : black" class="bi bi-file-earmark-plus" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path d="M9 1H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h5v-1H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h5v2.5A1.5 1.5 0 0 0 10.5 6H13v2h1V6L9 1z"/>
         <path fill-rule="evenodd" d="M13.5 10a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1H13v-1.5a.5.5 0 0 1 .5-.5z"/>
         <path fill-rule="evenodd" d="M13 12.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0v-2z"/>
@@ -53,31 +54,29 @@
             </form>
         </div>
     </nav>
-    <div  th:switch="${order}">
+    <!--/*@thymesVar id="goodsMain" type="com"*/-->
+    <div  th:switch="${goodsMain}">
         <table   id="myTable" class="table table-bordered,table table-sm">
             <thead >
             <tr>
                 <th class="table-active" onclick="sortTable(0)">№</th>
-                <th class="table-active" onclick="sortTable(1)">Организация</th>
-                <th class="table-active" onclick="sortTable(2)">Дата </th>
-                <th class="table-active" onclick="sortTable(3)">Адрес</th>
-                <th class="table-active" onclick="sortTable(4)">Клиент</th>
-                <th class="table-active" onclick="sortTable(5)">Редактировать</th>
+                <th class="table-active" onclick="sortTable(1)">Товар</th>
+                <th class="table-active" onclick="sortTable(2)">Стоимость</th>
+                <th class="table-active" onclick="sortTable(3)">Редактировать</th>
+                <th class="table-active" onclick="sortTable(4)">Удалить</th>
             </tr>
             </thead>
 
             <tbody >
-            <tr  th:each="user : ${order} " >
-                <td  th:text="${user.id}"></td>
-                <td th:text="${user.name}"></td>
-                <td th:text="${#dates.format(user.date, 'dd.MM.yyyy')}"></td>
-                <td th:text="${user.address}"></td>
-                <td th:text="${user.client}"></td>
+            <tr  th:each="goods : ${goods} " >
+                <td  th:text="${goods.id}"></td>
+                <td th:text="${goods.name}"></td>
+                <td th:text="${goods.price}"></td>
 
 
 
                 <td>
-                    <a th:href="@{order/{id}(id=${user.id})}">
+                    <a th:href="@{goods/{id}(id=${goods.id})}">
                         <svg style="color : black" class="bi bi-pencil" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"></path>
                             <path fill-rule="evenodd" d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"></path>
@@ -85,6 +84,11 @@
                     </a>
                 </td>
 
+                <td>
+                    <a th:href="@{goods-delete/{id}(id=${goods.id})}">
+                       Удалить
+                    </a>
+                </td>
             </tr>
 
             </tbody>
@@ -93,9 +97,7 @@
 </div>
 
 
-<script  th:src="@{/js/appealHome.js}">
 
-</script>
 </body>
 <style>
     body, html {
