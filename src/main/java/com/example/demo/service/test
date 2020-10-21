@@ -1,0 +1,164 @@
+ public static void main(String[] args) throws SQLException {
+
+        long time = System.currentTimeMillis();
+        updateDeleteSamples();
+        updateDelete();
+
+        saveDB("1");
+
+
+
+        saveF();
+
+
+        save();
+        System.out.println(System.currentTimeMillis() - time);
+
+    }
+    public static void saveDB(String size)  {
+
+        System.out.println("Начало вставки");
+        try (Connection c = getConnection()) {
+            String sql = "INSERT INTO\n" +
+                    "  samples (title)\n" +
+                    "VALUES\n" +
+                    "  (?), \n" +
+                    "  (?), \n" +
+                    "  (?), \n" +
+                    "  (?), \n" +
+                    "  (?), \n" +
+                    "  (?), \n" +
+                    "  (?), \n" +
+                    "  (?), \n" +
+                    "  (?), \n" +
+                    "  (?);";
+            PreparedStatement ps = c.prepareStatement(sql);
+
+            ps.setString(1, size);
+            ps.setString(2, size);
+            ps.setString(3, size);
+            ps.setString(4, size);
+            ps.setString(5, size);
+            ps.setString(6, size);
+            ps.setString(7, size);
+            ps.setString(8, size);
+            ps.setString(9, size);
+            ps.setString(10, size);
+            ps.addBatch();
+            ps.execute();
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+
+        }
+
+
+    }
+
+    public static void saveF()  {
+        System.out.println("Умнажение");
+        try (Connection c = getConnection()) {
+            String sql = "SELECT\n" +
+                    "    fst.title\n" +
+                    "FROM\n" +
+                    "    samples AS fst,\n" +
+                    "    samples AS snd,\n" +
+                    "    samples AS thd,\n" +
+                    "    samples AS fth,\n" +
+                    "    samples AS fif,\n" +
+                    "    samples AS sth;";
+            PreparedStatement ps = c.prepareStatement(sql);
+            ps.addBatch();
+            ps.execute();
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+
+        }
+
+
+    }
+    public static void save()  {
+        System.out.println("Сохранение в таблицу");
+        try (Connection c = getConnection()) {
+            String sql = "INSERT INTO\n" +
+                    "    tests\n" +
+                    "SELECT\n" +
+                    "    fst.title\n" +
+                    "FROM\n" +
+                    "    samples AS fst,\n" +
+                    "    samples AS snd,\n" +
+                    "    samples AS thd,\n" +
+                    "    samples AS fth,\n" +
+                    "    samples AS fif,\n" +
+                    "    samples AS sth;";
+            PreparedStatement ps = c.prepareStatement(sql);
+            ps.addBatch();
+            ps.execute();
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+
+        }
+
+
+    }
+
+
+    public static boolean updateDelete() throws SQLException {
+        System.out.println("Удаление из Tests ");
+        try (Connection c = getConnection()) {
+            PreparedStatement statement = c.prepareStatement("DELETE FROM tests ;");
+
+
+
+
+            int rowsUpdated = statement.executeUpdate();
+
+            if (rowsUpdated > 0) {
+                System.out.println("updated successfully!");
+            }
+
+
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+
+        }
+
+
+        return false;
+
+
+    }
+
+
+    public static boolean updateDeleteSamples() throws SQLException {
+
+        System.out.println("Удаление из Samples ");
+        try (Connection c = getConnection()) {
+            PreparedStatement statement = c.prepareStatement("DELETE FROM samples;");
+
+
+
+
+            int rowsUpdated = statement.executeUpdate();
+
+            if (rowsUpdated > 0) {
+                System.out.println("updated successfully!");
+            }
+
+
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+
+        }
+
+
+        return false;
+
+
+    }
+    public static Connection getConnection() throws SQLException {
+
+
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/xml", "root", "530433");
+
+
+    }
